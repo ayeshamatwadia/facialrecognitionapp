@@ -1,8 +1,9 @@
 import React from 'react';
 import Clarifai from 'clarifai';
 import Particles from 'react-particles-js';
-import Navigation from './components/Navigation/Navigation'
-import FaceRecognition from './components/FaceRecognition/FaceRecognition'
+import Navigation from './components/Navigation/Navigation';
+import FaceRecognition from './components/FaceRecognition/FaceRecognition';
+import Signin from './components/Signin/Signin';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import Rank from './components/Rank/Rank';
@@ -19,7 +20,8 @@ class App extends React.Component {
     this.state= {
       input: '',
       imageUrl: '', 
-      box: {},     
+      box: {},
+      route: 'signin',     
     }
   }
 
@@ -55,19 +57,27 @@ class App extends React.Component {
       console.log('There is an error', error);
     });
   }
+
+  onRouteChanged = (route) => {
+      this.setState({route: route})
+  }
   
   render() {
     return (
       <div className="App">
          <Particles className="particles" params={particlesOptions} />
-        <Navigation />
-        <Logo />
-        <Rank />
-        <ImageLinkForm 
-        onInputChange={this.onInputChange} 
-        onClickDetectButton={this.onClickDetectButton} 
-        />
-       <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+        <Navigation onRouteChanged={this.onRouteChanged}/>
+        {this.state.route === 'signin' ? <Signin onRouteChanged={this.onRouteChanged} />
+        : <div>
+            <Logo />
+            <Rank />
+            <ImageLinkForm 
+            onInputChange={this.onInputChange} 
+            onClickDetectButton={this.onClickDetectButton} 
+            />
+            <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+          </div> 
+       } 
       </div>
     );
   }
