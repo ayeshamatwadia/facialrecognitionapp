@@ -4,7 +4,7 @@
   "description": "This is just some basic node work.",
   "main": "script1.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
