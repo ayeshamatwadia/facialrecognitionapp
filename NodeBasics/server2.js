@@ -10,17 +10,17 @@ app.use((req, res, next) => {
     next();
 })
 
-app.get('/', (req, res) => {
-    const user = {
-        name:'Ayesha',
-        hobby:'shopping'
-    }
-    res.send(user);
-});
-
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 app.get('/profile', (req, res) => {
     res.send("getting the profile");
+});
+
+
+app.post('/profile', (req, res) => {
+    console.log('the request is ', req.body);
+    res.send('test');
 });
 
 app.listen(3000);
