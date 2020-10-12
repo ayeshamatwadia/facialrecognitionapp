@@ -4,11 +4,14 @@
   "description": "This is just some basic node work.",
   "main": "script1.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server2.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
