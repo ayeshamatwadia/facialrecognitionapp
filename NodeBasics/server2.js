@@ -1,19 +1,8 @@
+const { static } = require('express');
 const express = require('express');
 
 const app = express();
 
-// express middleware which can change the request before
-// getting the routes
-
-app.use(express.urlencoded({extended: false}));
-app.use(express.json());
-
-app.get('/profile', (req, res) => {
-    req.query;
-    req.body;
-    req.header;
-    req.params;
-    res.status(404).send("getting the profile");
-});
+app.use(static(__dirname + '/public'));
 
 app.listen(3001);
