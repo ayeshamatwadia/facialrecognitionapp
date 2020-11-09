@@ -13,7 +13,7 @@ app.get('/profile', (req, res) => {
     req.body;
     req.header;
     req.params;
-    res.send("getting the profile");
+    res.status(404).send("getting the profile");
 });
 
 app.listen(3001);
